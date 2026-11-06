@@ -68,7 +68,7 @@ export function Layout() {
           </div>
         </div>
       </header>
-      <div className="mx-auto grid max-w-[1440px] lg:grid-cols-[232px_minmax(0,1fr)] lg:gap-12 px-5 md:px-8">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-[minmax(0,1fr)] px-5 md:px-8 lg:grid-cols-[232px_minmax(0,1fr)] lg:gap-12">
         <aside className="sticky top-16 hidden h-[calc(100svh-4rem)] overflow-y-auto pt-10 scrollbar-thin lg:block">
           <Nav />
         </aside>

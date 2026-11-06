@@ -1,0 +1,1723 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "quicksort",
+  "homepage": "https://quicksort.design/components",
+  "items": [
+    {
+      "name": "theme",
+      "type": "registry:style",
+      "title": "Quicksort theme",
+      "description": "Ink, paper, stone and the lime pivot as shadcn tokens, Host Grotesk and Martian Mono, light and dark.",
+      "dependencies": [
+        "@fontsource-variable/host-grotesk",
+        "@fontsource-variable/martian-mono",
+        "tw-animate-css"
+      ],
+      "cssVars": {
+        "theme": {
+          "font-sans": "\"Host Grotesk Variable\", \"Host Grotesk\", ui-sans-serif, system-ui, sans-serif",
+          "font-heading": "var(--font-sans)",
+          "font-mono": "\"Martian Mono Variable\", \"Martian Mono\", ui-monospace, monospace",
+          "color-pivot": "var(--pivot)",
+          "color-pivot-foreground": "var(--pivot-foreground)",
+          "color-faint": "var(--faint)",
+          "color-success": "var(--success)",
+          "color-warning": "var(--warning)",
+          "color-destructive-foreground": "var(--destructive-foreground)"
+        },
+        "light": {
+          "background": "#f3f0e8",
+          "foreground": "#141414",
+          "card": "#faf8f3",
+          "card-foreground": "#141414",
+          "popover": "#faf8f3",
+          "popover-foreground": "#141414",
+          "primary": "#141414",
+          "primary-foreground": "#faf8f3",
+          "secondary": "#e9e5db",
+          "secondary-foreground": "#141414",
+          "muted": "#ebe7de",
+          "muted-foreground": "#55504a",
+          "accent": "#e4e0d6",
+          "accent-foreground": "#141414",
+          "destructive": "#b42318",
+          "destructive-foreground": "#faf8f3",
+          "success": "#2f6b3a",
+          "warning": "#9a5b00",
+          "border": "#e4e1db",
+          "input": "#c9c4bb",
+          "ring": "#141414",
+          "pivot": "#ccff00",
+          "pivot-foreground": "#141414",
+          "faint": "#736c61",
+          "chart-1": "#141414",
+          "chart-2": "#736c61",
+          "chart-3": "#b8b4ad",
+          "chart-4": "#ccff00",
+          "chart-5": "#55504a",
+          "radius": "0.125rem",
+          "sidebar": "#faf8f3",
+          "sidebar-foreground": "#141414",
+          "sidebar-primary": "#141414",
+          "sidebar-primary-foreground": "#faf8f3",
+          "sidebar-accent": "#ebe7de",
+          "sidebar-accent-foreground": "#141414",
+          "sidebar-border": "#e4e1db",
+          "sidebar-ring": "#141414"
+        },
+        "dark": {
+          "background": "#141413",
+          "foreground": "#ece8df",
+          "card": "#1d1d1b",
+          "card-foreground": "#ece8df",
+          "popover": "#1d1d1b",
+          "popover-foreground": "#ece8df",
+          "primary": "#ece8df",
+          "primary-foreground": "#141413",
+          "secondary": "#262624",
+          "secondary-foreground": "#ece8df",
+          "muted": "#222220",
+          "muted-foreground": "#b5b0a7",
+          "accent": "#2a2a28",
+          "accent-foreground": "#ece8df",
+          "destructive": "#f2765f",
+          "destructive-foreground": "#141413",
+          "success": "#7fc28b",
+          "warning": "#e0a443",
+          "border": "#2a2927",
+          "input": "#3f3d3a",
+          "ring": "#ece8df",
+          "pivot": "#ccff00",
+          "pivot-foreground": "#141414",
+          "faint": "#918c84",
+          "chart-1": "#ece8df",
+          "chart-2": "#918c84",
+          "chart-3": "#3f3d3a",
+          "chart-4": "#ccff00",
+          "chart-5": "#b5b0a7",
+          "sidebar": "#1a1a18",
+          "sidebar-foreground": "#ece8df",
+          "sidebar-primary": "#ece8df",
+          "sidebar-primary-foreground": "#141413",
+          "sidebar-accent": "#262624",
+          "sidebar-accent-foreground": "#ece8df",
+          "sidebar-border": "#2a2927",
+          "sidebar-ring": "#ece8df"
+        }
+      },
+      "css": {
+        "@import \"@fontsource-variable/host-grotesk\"": {},
+        "@import \"@fontsource-variable/martian-mono\"": {},
+        "@layer base": {
+          "html": {
+            "@apply font-sans": {},
+            "-webkit-font-smoothing": "antialiased"
+          },
+          "::selection": {
+            "background": "var(--pivot)",
+            "color": "var(--pivot-foreground)"
+          }
+        },
+        "@utility label-mono": {
+          "font-family": "var(--font-mono)",
+          "font-size": "11px",
+          "line-height": "1.2",
+          "letter-spacing": ".06em",
+          "text-transform": "uppercase",
+          "color": "var(--muted-foreground)"
+        },
+        "@utility num": {
+          "font-family": "var(--font-mono)",
+          "font-variant-numeric": "tabular-nums",
+          "letter-spacing": "-0.02em"
+        }
+      }
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Sections that open one at a time.",
+      "categories": [
+        "layout"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert dialog",
+      "description": "Asks to confirm an action that can't be undone.",
+      "categories": [
+        "overlays"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "A message that needs attention, in the flow of the page.",
+      "categories": [
+        "feedback"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect ratio",
+      "description": "Keep media at a fixed ratio.",
+      "categories": [
+        "data-display"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "attachment",
+      "type": "registry:ui",
+      "title": "Attachment",
+      "description": "A file attached to a message.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/attachment.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "A person's photo or initials.",
+      "categories": [
+        "data-display"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A short status or label in mono.",
+      "categories": [
+        "data-display"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Where you are, every step a link.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bubble",
+      "type": "registry:ui",
+      "title": "Bubble",
+      "description": "A chat bubble.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/bubble.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button group",
+      "description": "Related actions joined into one control.",
+      "categories": [
+        "actions"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/separator.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Ink for the default action, lime for the one action that matters on a screen.",
+      "categories": [
+        "actions"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A month grid for choosing a day or a range.",
+      "categories": [
+        "dates"
+      ],
+      "dependencies": [
+        "cn",
+        "react-day-picker",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A surface that groups related content and actions.",
+      "categories": [
+        "data-display"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "A row of slides with previous and next.",
+      "categories": [
+        "data-display"
+      ],
+      "dependencies": [
+        "cn",
+        "embla-carousel-react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Bars, lines and areas in ink and stone, with the key value in lime.",
+      "categories": [
+        "data-display"
+      ],
+      "dependencies": [
+        "cn",
+        "recharts"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Turn an option on or off.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "Code block",
+      "description": "Highlighted code with a copy button.",
+      "categories": [
+        "data-display"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/code-block.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Show and hide a section.",
+      "categories": [
+        "layout"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "A select you can type into to filter.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json",
+        "https://quicksort.design/r/input-group.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Search and run commands from the keyboard.",
+      "categories": [
+        "overlays"
+      ],
+      "dependencies": [
+        "cmdk",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/dialog.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context menu",
+      "description": "Actions on right-click.",
+      "categories": [
+        "overlays"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date picker",
+      "description": "A field that opens a calendar: single date, range and presets.",
+      "categories": [
+        "dates"
+      ],
+      "dependencies": [
+        "cn",
+        "date-fns",
+        "react-day-picker",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json",
+        "https://quicksort.design/r/calendar.json",
+        "https://quicksort.design/r/popover.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A window over the page for a focused task.",
+      "categories": [
+        "overlays"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "direction",
+      "description": "",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A panel from the bottom, made for touch.",
+      "categories": [
+        "overlays"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown menu",
+      "description": "A list of actions from a button.",
+      "categories": [
+        "overlays"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty state",
+      "description": "What to show when there is nothing yet.",
+      "categories": [
+        "data-display"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Label, control, description and error, laid out together.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/label.json",
+        "https://quicksort.design/r/separator.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover card",
+      "description": "A preview on hover.",
+      "categories": [
+        "overlays"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input group",
+      "description": "An input with icons, text or buttons attached.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json",
+        "https://quicksort.design/r/input.json",
+        "https://quicksort.design/r/textarea.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "One-time code",
+      "description": "Code entry, one character per slot.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "cn",
+        "input-otp",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Single-line text entry.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "A row with media, text and actions.",
+      "categories": [
+        "data-display"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/separator.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Keyboard key",
+      "description": "A key or shortcut.",
+      "categories": [
+        "data-display"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "The name of a form control.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "marker",
+      "type": "registry:ui",
+      "title": "Marker",
+      "description": "Inline status in a conversation.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/marker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "An application menu bar.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/dropdown-menu.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message-scroller",
+      "type": "registry:ui",
+      "title": "Message scroller",
+      "description": "A conversation that keeps to the latest message.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "@shadcn/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/message-scroller.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "A chat message from a person or an assistant.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/message.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native select",
+      "description": "The browser's own select, styled.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation menu",
+      "description": "Site navigation with rich dropdowns.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Move through pages of results.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Rich content anchored to a trigger.",
+      "categories": [
+        "overlays"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "How far a task has gone.",
+      "categories": [
+        "feedback"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "questionnaire",
+      "type": "registry:ui",
+      "title": "Questionnaire",
+      "description": "Questions an agent asks a person.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "@shadcn/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/questionnaire.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio group",
+      "description": "Choose one option from a short list.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Panels you can resize by dragging.",
+      "categories": [
+        "layout"
+      ],
+      "dependencies": [
+        "cn",
+        "react-resizable-panels"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll area",
+      "description": "A scrolling region with a quiet scrollbar.",
+      "categories": [
+        "layout"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Choose one option from a list.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A hairline between groups.",
+      "categories": [
+        "layout"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "A panel that slides in from an edge.",
+      "categories": [
+        "overlays"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Collapsible application navigation.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json",
+        "https://quicksort.design/r/input.json",
+        "https://quicksort.design/r/separator.json",
+        "https://quicksort.design/r/sheet.json",
+        "https://quicksort.design/r/skeleton.json",
+        "https://quicksort.design/r/tooltip.json",
+        "https://quicksort.design/r/hooks-use-mobile.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A placeholder while content loads.",
+      "categories": [
+        "feedback"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Pick a value or a range on a scale.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Work in progress, length unknown.",
+      "categories": [
+        "feedback"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A setting that takes effect immediately.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Rows and columns, with numbers in mono.",
+      "categories": [
+        "data-display"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Switch between views of the same content.",
+      "categories": [
+        "navigation"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line text entry.",
+      "categories": [
+        "forms"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "A brief message that confirms an action.",
+      "categories": [
+        "feedback"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/toast.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle group",
+      "description": "A set of toggles, one or many on.",
+      "categories": [
+        "actions"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/toggle.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state button.",
+      "categories": [
+        "actions"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A short label on hover or focus.",
+      "categories": [
+        "overlays"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "trace",
+      "type": "registry:ui",
+      "title": "Trace",
+      "description": "The steps an agent took, step by step.",
+      "categories": [
+        "ai"
+      ],
+      "dependencies": [
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json",
+        "https://quicksort.design/r/collapsible.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/trace.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "icons",
+      "type": "registry:component",
+      "title": "Pixel icons",
+      "description": "Fifteen pixel icons on a 16 × 16 grid.",
+      "categories": [
+        "quicksort"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/quicksort/icons.tsx",
+          "type": "registry:component",
+          "target": "@components/quicksort/icons.tsx"
+        }
+      ]
+    },
+    {
+      "name": "logo",
+      "type": "registry:component",
+      "title": "Logo",
+      "description": "The mark and wordmark.",
+      "categories": [
+        "quicksort"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/quicksort/logo.tsx",
+          "type": "registry:component",
+          "target": "@components/quicksort/logo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pivot",
+      "type": "registry:component",
+      "title": "Pivot",
+      "description": "The lime dot: the one thing that matters.",
+      "categories": [
+        "quicksort"
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/quicksort/pivot.tsx",
+          "type": "registry:component",
+          "target": "@components/quicksort/pivot.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stat",
+      "type": "registry:component",
+      "title": "Stat",
+      "description": "A number, its unit and its source, set in mono.",
+      "categories": [
+        "quicksort"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/quicksort/stat.tsx",
+          "type": "registry:component",
+          "target": "@components/quicksort/stat.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ticket",
+      "type": "registry:component",
+      "title": "Event ticket",
+      "description": "The event cover: title, partner and date stub.",
+      "categories": [
+        "quicksort"
+      ],
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "https://quicksort.design/r/theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/quicksort/ticket.tsx",
+          "type": "registry:component",
+          "target": "@components/quicksort/ticket.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hooks-use-mobile",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
+    }
+  ]
+}

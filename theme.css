@@ -1,0 +1,7 @@
+/* @quicksort/ui theme. In your app CSS:
+     @import "tailwindcss";
+     @import "@quicksort/ui/theme.css";
+     @source "../node_modules/@quicksort/ui/dist";   (so Tailwind generates the classes the components use) */
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./src/styles/theme.css";

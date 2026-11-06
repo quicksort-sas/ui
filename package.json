@@ -1,20 +1,55 @@
 {
-  "name": "ui",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@quicksort/ui",
+  "version": "0.1.0",
+  "description": "React components in the Quicksort style, built on shadcn/ui and Base UI. Light and dark.",
+  "license": "MIT",
+  "homepage": "https://quicksort.design/components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quicksort-sas/ui.git"
+  },
   "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist",
+    "theme.css",
+    "src/styles/theme.css",
+    "README.md"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./theme.css": "./theme.css",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:lib": "vite build -c vite.lib.config.ts && tsc -p tsconfig.lib.json && tsc-alias -p tsconfig.lib.json",
+    "build:registry": "node scripts/registry.mjs && shadcn build -o dist-docs/r",
+    "build:site": "vite build --outDir dist-docs/components && node scripts/registry.mjs && shadcn build -o dist-docs/r",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "pnpm build:lib",
+    "publish:site": "pnpm build:site && rm -rf ../design/components ../design/r && cp -R dist-docs/components ../design/components && cp -R dist-docs/r ../design/r"
+  },
+  "peerDependencies": {
+    "react": "^19",
+    "react-dom": "^19",
+    "tailwindcss": "^4"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
     "@fontsource-variable/host-grotesk": "^5.3.0",
     "@fontsource-variable/martian-mono": "^5.3.0",
     "@shadcn/react": "^0.3.1",
-    "@tailwindcss/vite": "^4.3.5",
     "class-variance-authority": "^0.7.1",
     "cmdk": "^1.1.1",
     "cn": "^0.5.2",
@@ -22,24 +57,29 @@
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.5.0",
     "lucide-react": "^1.70.0",
-    "react": "^19.3.1",
     "react-day-picker": "^10.0.2",
-    "react-dom": "^19.3.1",
     "react-resizable-panels": "^4.19.0",
-    "react-router": "^8.5.1",
     "recharts": "3.8.0",
     "shadcn": "^4.23.0",
-    "shiki": "^4.6.0",
-    "tailwindcss": "^4.3.5",
     "tw-animate-css": "^1.4.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
     "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.90.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router": "^8.5.1",
+    "shiki": "^4.6.0",
+    "tailwindcss": "^4.3.5",
+    "tsc-alias": "^1.9.10",
     "typescript": "~7.0.2",
     "vite": "^8.3.6"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
