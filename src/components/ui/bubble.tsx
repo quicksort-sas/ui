@@ -8,31 +8,28 @@ function BubbleGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="bubble-group"
-      className={cn("flex min-w-0 flex-col gap-2", className)}
+      className={cn("flex min-w-0 flex-col gap-1.5", className)}
       {...props}
     />
   )
 }
 
 const bubbleVariants = cva(
-  "group/bubble relative flex w-fit max-w-[80%] min-w-0 flex-col gap-1 group-data-[align=end]/message:self-end data-[align=end]:self-end data-[variant=ghost]:max-w-full",
+  "group/bubble relative flex w-fit max-w-[85%] min-w-0 flex-col gap-1 group-data-[align=end]/message:self-end data-[align=end]:ms-auto data-[align=end]:self-end data-[variant=ghost]:max-w-full",
   {
     variants: {
       variant: {
-        default:
-          "*:data-[slot=bubble-content]:bg-primary *:data-[slot=bubble-content]:text-primary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-primary/80",
-        secondary:
-          "*:data-[slot=bubble-content]:bg-secondary *:data-[slot=bubble-content]:text-secondary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)]",
-        muted:
-          "*:data-[slot=bubble-content]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_oklch,var(--muted),var(--foreground)_5%)]",
-        tinted:
-          "*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.93_calc(c*0.4)_h)] *:data-[slot=bubble-content]:text-foreground dark:*:data-[slot=bubble-content]:bg-[oklch(from_var(--primary)_0.3_calc(c*0.4)_h)] [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.88_calc(c*0.5)_h)] dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-[oklch(from_var(--primary)_0.35_calc(c*0.5)_h)]",
-        outline:
-          "*:data-[slot=bubble-content]:border-border *:data-[slot=bubble-content]:bg-background [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-input/30",
-        ghost:
-          "border-none *:data-[slot=bubble-content]:rounded-none *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted [&>[data-slot=bubble-content]:is(button,a):hover]:text-foreground dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-muted/50",
-        destructive:
-          "*:data-[slot=bubble-content]:bg-destructive/10 *:data-[slot=bubble-content]:text-destructive dark:*:data-[slot=bubble-content]:bg-destructive/20 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/20 dark:[&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/30",
+        // ink: what the person wrote
+        default: "*:data-[slot=bubble-content]:bg-primary *:data-[slot=bubble-content]:text-primary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_srgb,var(--primary)_86%,var(--background))]",
+        user: "*:data-[slot=bubble-content]:bg-primary *:data-[slot=bubble-content]:text-primary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_srgb,var(--primary)_86%,var(--background))]",
+        // card with a hairline: what the assistant wrote
+        assistant: "*:data-[slot=bubble-content]:border-border *:data-[slot=bubble-content]:bg-card *:data-[slot=bubble-content]:text-card-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-accent",
+        outline: "*:data-[slot=bubble-content]:border-border *:data-[slot=bubble-content]:bg-card *:data-[slot=bubble-content]:text-card-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-accent",
+        secondary: "*:data-[slot=bubble-content]:bg-secondary *:data-[slot=bubble-content]:text-secondary-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-accent",
+        muted: "*:data-[slot=bubble-content]:bg-muted *:data-[slot=bubble-content]:text-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-accent",
+        tinted: "*:data-[slot=bubble-content]:bg-accent *:data-[slot=bubble-content]:text-accent-foreground [&>[data-slot=bubble-content]:is(button,a):hover]:bg-[color-mix(in_srgb,var(--accent),var(--foreground)_6%)]",
+        ghost: "border-none *:data-[slot=bubble-content]:rounded-none *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-accent",
+        destructive: "*:data-[slot=bubble-content]:border-destructive/25 *:data-[slot=bubble-content]:bg-destructive/8 *:data-[slot=bubble-content]:text-destructive [&>[data-slot=bubble-content]:is(button,a):hover]:bg-destructive/14",
       },
     },
     defaultVariants: {
@@ -71,7 +68,7 @@ function BubbleContent({
     props: mergeProps<"div">(
       {
         className: cn(
-          "w-fit max-w-full min-w-0 overflow-hidden rounded-xl border border-transparent px-3 py-2 text-sm leading-relaxed wrap-break-word group-data-[align=end]/bubble:self-end [button]:text-left [button,a]:transition-colors [button,a]:outline-none [button,a]:focus-visible:border-ring [button,a]:focus-visible:ring-3 [button,a]:focus-visible:ring-ring/50",
+          "w-fit max-w-full min-w-0 overflow-hidden rounded-lg border border-transparent px-4 py-2.5 text-[15px] leading-[1.55] text-pretty wrap-break-word group-data-[align=end]/bubble:self-end [&_p+p]:mt-2 [&_strong]:font-medium [&_ul]:my-1.5 [&_ul]:grid [&_ul]:gap-1 [&_ul]:pl-4 [&_ul]:list-[square] [&_li]:marker:text-faint [button]:text-left [button,a]:transition-colors [button,a]:outline-none [button,a]:focus-visible:ring-2 [button,a]:focus-visible:ring-ring [button,a]:focus-visible:ring-offset-2 [button,a]:focus-visible:ring-offset-background",
           className
         ),
       },
@@ -85,7 +82,7 @@ function BubbleContent({
 }
 
 const bubbleReactionsVariants = cva(
-  "absolute z-10 flex w-fit shrink-0 items-center justify-center gap-1 rounded-full bg-muted px-1.5 py-0.5 text-sm ring-3 ring-card has-[button]:p-0",
+  "absolute z-10 flex w-fit shrink-0 items-center justify-center gap-1 rounded-sm border border-border bg-card px-1.5 py-0.5 font-mono text-[11px] text-muted-foreground has-[button]:p-0",
   {
     variants: {
       side: {
@@ -124,4 +121,4 @@ function BubbleReactions({
   )
 }
 
-export { BubbleGroup, Bubble, BubbleContent, BubbleReactions }
+export { BubbleGroup, Bubble, BubbleContent, BubbleReactions, bubbleVariants }

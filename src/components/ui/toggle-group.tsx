@@ -14,15 +14,21 @@ const ToggleGroupContext = React.createContext<
 >({
   size: "default",
   variant: "default",
-  spacing: 2,
+  spacing: 0,
   orientation: "horizontal",
 })
 
+/**
+ * spacing 0 (the default) joins the items:
+ * - variant "default" is a segmented control: a muted track, the pressed item raised on the page colour.
+ * - variant "outline" is a row of outlined toggles sharing their borders.
+ * spacing > 0 lays out free-standing toggles with a gap.
+ */
 function ToggleGroup({
   className,
-  variant,
-  size,
-  spacing = 2,
+  variant = "default",
+  size = "default",
+  spacing = 0,
   orientation = "horizontal",
   children,
   ...props
@@ -40,7 +46,8 @@ function ToggleGroup({
       data-orientation={orientation}
       style={{ "--gap": spacing } as React.CSSProperties}
       className={cn(
-        "group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-lg data-[size=sm]:rounded-[min(var(--radius-md),10px)] data-vertical:flex-col data-vertical:items-stretch",
+        "group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-lg data-vertical:flex-col data-vertical:items-stretch",
+        "data-[spacing=0]:data-[variant=default]:gap-0.5 data-[spacing=0]:data-[variant=default]:bg-muted data-[spacing=0]:data-[variant=default]:p-[3px]",
         className
       )}
       {...props}
@@ -62,19 +69,24 @@ function ToggleGroupItem({
   ...props
 }: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {
   const context = React.useContext(ToggleGroupContext)
+  const v = context.variant || variant
+  const s = context.size || size
 
   return (
     <TogglePrimitive
       data-slot="toggle-group-item"
-      data-variant={context.variant || variant}
-      data-size={context.size || size}
+      data-variant={v}
+      data-size={s}
       data-spacing={context.spacing}
       className={cn(
-        "shrink-0 group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2 focus:z-10 focus-visible:z-10 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-end]:pr-1.5 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-start]:pl-1.5 group-data-horizontal/toggle-group:data-[spacing=0]:first:rounded-l-lg group-data-vertical/toggle-group:data-[spacing=0]:first:rounded-t-lg group-data-horizontal/toggle-group:data-[spacing=0]:last:rounded-r-lg group-data-vertical/toggle-group:data-[spacing=0]:last:rounded-b-lg group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:border-l-0 group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:border-t-0 group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-l group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-t",
-        toggleVariants({
-          variant: context.variant || variant,
-          size: context.size || size,
-        }),
+        toggleVariants({ variant: v, size: s }),
+        "shrink-0 focus-visible:z-10",
+        // segmented control (spacing 0, default variant)
+        "data-[spacing=0]:data-[variant=default]:rounded-md data-[spacing=0]:data-[variant=default]:hover:bg-transparent data-[spacing=0]:data-[variant=default]:aria-pressed:border-input/70 dark:data-[spacing=0]:data-[variant=default]:aria-pressed:border-border data-[spacing=0]:data-[variant=default]:aria-pressed:bg-background data-[spacing=0]:data-[variant=default]:data-pressed:border-input/70 dark:data-[spacing=0]:data-[variant=default]:data-pressed:border-border data-[spacing=0]:data-[variant=default]:data-pressed:bg-background",
+        "data-[spacing=0]:data-[variant=default]:data-[size=default]:h-[34px] data-[spacing=0]:data-[variant=default]:data-[size=sm]:h-[26px] data-[spacing=0]:data-[variant=default]:data-[size=lg]:h-[42px] data-[spacing=0]:data-[variant=default]:focus-visible:ring-offset-0",
+        // joined outline buttons (spacing 0, outline variant)
+        "data-[spacing=0]:data-[variant=outline]:rounded-none group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:not-first:border-l-0 group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:not-first:border-t-0",
+        "group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:first:rounded-l-lg group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:last:rounded-r-lg group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:first:rounded-t-lg group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:last:rounded-b-lg",
         className
       )}
       {...props}

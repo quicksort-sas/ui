@@ -26,10 +26,10 @@ function Slider({
       thumbAlignment="edge"
       {...props}
     >
-      <SliderPrimitive.Control className="relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col">
+      <SliderPrimitive.Control className="relative flex w-full touch-none items-center select-none data-disabled:opacity-45 data-horizontal:h-5 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-5 data-vertical:flex-col">
         <SliderPrimitive.Track
           data-slot="slider-track"
-          className="relative grow overflow-hidden rounded-full bg-muted select-none data-horizontal:h-1 data-horizontal:w-full data-vertical:h-full data-vertical:w-1"
+          className="relative grow overflow-hidden rounded-full bg-input select-none data-horizontal:h-0.5 data-horizontal:w-full data-vertical:h-full data-vertical:w-0.5"
         >
           <SliderPrimitive.Indicator
             data-slot="slider-range"
@@ -40,7 +40,7 @@ function Slider({
           <SliderPrimitive.Thumb
             data-slot="slider-thumb"
             key={index}
-            className="relative block size-3 shrink-0 rounded-full border border-ring bg-white ring-ring/50 transition-[color,box-shadow] select-none after:absolute after:-inset-2 hover:ring-3 focus-visible:ring-3 focus-visible:outline-hidden active:ring-3 disabled:pointer-events-none disabled:opacity-50"
+            className="relative block size-4 shrink-0 rounded-full border-[1.5px] border-foreground bg-card ring-ring/15 transition-[box-shadow] duration-150 ease-out select-none after:absolute after:-inset-2 hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-ring/25 active:ring-4 data-dragging:ring-4 data-disabled:pointer-events-none motion-reduce:transition-none"
           />
         ))}
       </SliderPrimitive.Control>
