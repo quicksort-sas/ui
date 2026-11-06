@@ -8,6 +8,10 @@ Quicksort sorts everything in one pass around a single pivot. Ink (#141414), pap
 interface. Lime (`pivot`, #CCFF00) marks the ONE thing that matters on a screen: one dot, one bar, one button. Never two.
 Precision over decoration: no gradients, no glows, no heavy shadows, no emoji.
 
+**Exception: the event ticket.** The brand's event cover (as on quicksort.fr/events) carries three lime touches by design:
+the logo's dot (lime on ink, as the logo always is on dark grounds), the end of the title, and the month. Keep them;
+don't put another lime element next to a ticket.
+
 ## Tokens (Tailwind classes)
 - Surfaces: `bg-background` (page), `bg-card` / `bg-popover` (raised), `bg-muted`, `bg-accent` (hover), `bg-secondary`.
 - Text: `text-foreground`, `text-muted-foreground` (secondary), `text-faint` (tertiary).

@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { cn } from "cn"
-import { format as formatDate, isSameDay } from "date-fns"
-import type { DateRange, Matcher } from "react-day-picker"
+import { eachDayOfInterval, format as formatDate, isSameDay } from "date-fns"
+import { dateMatchModifiers, type DateRange, type Matcher } from "react-day-picker"
 import { CalendarIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -84,10 +84,13 @@ function DatePickerPresets<T>({
   presets,
   isActive,
   onSelect,
+  isDisabled,
 }: {
   presets: DatePreset<T>[]
   isActive: (value: T) => boolean
   onSelect: (value: T) => void
+  /** A shortcut that would select a disabled date is shown but can't be chosen. */
+  isDisabled?: (value: T) => boolean
 }) {
   return (
     <div
@@ -98,6 +101,7 @@ function DatePickerPresets<T>({
       {presets.map((preset) => {
         const value = resolve(preset.value)
         const active = isActive(value)
+        const blocked = isDisabled?.(value) ?? false
         return (
           <Button
             key={preset.label}
@@ -106,8 +110,9 @@ function DatePickerPresets<T>({
             size="sm"
             data-active={active || undefined}
             aria-pressed={active}
+            disabled={blocked}
             className="h-8 shrink-0 justify-start rounded-md px-2.5 text-[14px] font-normal text-muted-foreground hover:text-foreground data-active:bg-accent data-active:font-medium data-active:text-foreground"
-            onClick={() => onSelect(resolve(preset.value))}
+            onClick={() => { const v = resolve(preset.value); if (!isDisabled?.(v)) onSelect(v) }}
           >
             {preset.label}
           </Button>
@@ -115,6 +120,18 @@ function DatePickerPresets<T>({
       })}
     </div>
   )
+}
+
+/** True when a date falls on a disabled day (same rules the calendar uses). */
+function isDisabledDay(date: Date, disabled?: Matcher | Matcher[]) {
+  return !!disabled && dateMatchModifiers(date, disabled)
+}
+
+/** True when any day of a range is disabled. */
+function rangeHitsDisabled(range: DateRange, disabled?: Matcher | Matcher[]) {
+  if (!disabled || !range.from) return false
+  const days = range.to ? eachDayOfInterval({ start: range.from, end: range.to }) : [range.from]
+  return days.some((d) => dateMatchModifiers(d, disabled))
 }
 
 type CalendarPassThrough = Omit<
@@ -204,7 +221,7 @@ function DatePicker({
         label={date ? formatDate(date, format) : undefined}
         {...aria}
       />
-      {name && <input type="hidden" name={name} value={date ? formatDate(date, ISO) : ""} />}
+      {name && <input type="hidden" name={name} disabled={disabled} value={date ? formatDate(date, ISO) : ""} />}
       <PopoverContent
         data-slot="date-picker-content"
         align={align}
@@ -214,6 +231,7 @@ function DatePicker({
           <DatePickerPresets
             presets={presets}
             isActive={(v) => !!date && isSameDay(v, date)}
+            isDisabled={(v) => isDisabledDay(v, disabledDates)}
             onSelect={(v) => {
               setMonth(v)
               pick(v)
@@ -306,8 +324,8 @@ function DateRangePicker({
       />
       {name && (
         <>
-          <input type="hidden" name={`${name}_from`} value={range?.from ? formatDate(range.from, ISO) : ""} />
-          <input type="hidden" name={`${name}_to`} value={range?.to ? formatDate(range.to, ISO) : ""} />
+          <input type="hidden" name={`${name}_from`} disabled={disabled} value={range?.from ? formatDate(range.from, ISO) : ""} />
+          <input type="hidden" name={`${name}_to`} disabled={disabled} value={range?.to ? formatDate(range.to, ISO) : ""} />
         </>
       )}
       <PopoverContent
@@ -322,6 +340,7 @@ function DateRangePicker({
               !!range?.from && !!range.to && !!v.from && !!v.to &&
               isSameDay(v.from, range.from) && isSameDay(v.to, range.to)
             }
+            isDisabled={(v) => rangeHitsDisabled(v, disabledDates)}
             onSelect={(v) => {
               setRange(v)
               if (v.from) setMonth(v.from)

@@ -28,7 +28,7 @@
   --success: #2f6b3a;
   --warning: #9a5b00;
   --border: #e4e1db;                /* stone-200 */
-  --input: #c9c4bb;
+  --input: #8a857d;                /* control outlines: 3:1 on paper and card (WCAG 1.4.11) */
   --ring: #141414;
   --pivot: #ccff00;                 /* lime: one per view */
   --pivot-foreground: #141414;
@@ -69,7 +69,7 @@
   --success: #7fc28b;
   --warning: #e0a443;
   --border: #2a2927;
-  --input: #3f3d3a;
+  --input: #76726b;                /* 3:1 on dark page and card */
   --ring: #ece8df;
   --pivot: #ccff00;
   --pivot-foreground: #141414;

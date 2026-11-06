@@ -38,6 +38,16 @@ function Nav({ onNavigate }: { onNavigate?: () => void }) {
 
 export function Layout() {
   const [open, setOpen] = React.useState(false)
+  const menuRef = React.useRef<HTMLDivElement>(null)
+  const toggleRef = React.useRef<HTMLButtonElement>(null)
+  // Phone menu behaves as a modal: focus moves in, Escape closes, focus returns to the menu button.
+  React.useEffect(() => {
+    if (!open) return
+    menuRef.current?.querySelector<HTMLElement>("a,button")?.focus()
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") { setOpen(false); toggleRef.current?.focus() } }
+    document.addEventListener("keydown", onKey)
+    return () => document.removeEventListener("keydown", onKey)
+  }, [open])
   const { pathname } = useLocation()
   React.useEffect(() => { window.scrollTo(0, 0); setOpen(false) }, [pathname])
   return (
@@ -62,7 +72,7 @@ export function Layout() {
           <div className="flex items-center gap-2">
             <a href="https://github.com/quicksort-sas/ui" className="hidden rounded-md px-2 py-1.5 text-sm text-muted-foreground hover:text-foreground sm:inline">GitHub</a>
             <ThemeToggle />
-            <button type="button" className="grid size-9 place-items-center rounded-md lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+            <button ref={toggleRef} type="button" aria-controls="docs-menu" className="grid size-9 place-items-center rounded-md lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
               {open ? <XIcon className="size-5" /> : <MenuIcon className="size-5" />}
             </button>
           </div>
@@ -73,9 +83,9 @@ export function Layout() {
           <Nav />
         </aside>
         {open && (
-          <div className="fixed inset-x-0 top-16 bottom-0 z-20 overflow-y-auto bg-background px-5 pt-6 lg:hidden"><Nav onNavigate={() => setOpen(false)} /></div>
+          <div ref={menuRef} id="docs-menu" role="dialog" aria-modal="true" aria-label="Components menu" className="fixed inset-x-0 top-16 bottom-0 z-20 overflow-y-auto bg-background px-5 pt-6 lg:hidden"><Nav onNavigate={() => setOpen(false)} /></div>
         )}
-        <main className="min-w-0 py-10 md:py-14"><Outlet /></main>
+        <main className="min-w-0 py-10 md:py-14" inert={open || undefined}><Outlet /></main>
       </div>
     </div>
   )

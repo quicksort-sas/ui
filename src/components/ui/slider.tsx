@@ -1,3 +1,5 @@
+"use client"
+
 import { Slider as SliderPrimitive } from "@base-ui/react/slider"
 import { cn } from "cn"
 
@@ -9,11 +11,9 @@ function Slider({
   max = 100,
   ...props
 }: SliderPrimitive.Root.Props) {
-  const _values = Array.isArray(value)
-    ? value
-    : Array.isArray(defaultValue)
-      ? defaultValue
-      : [min, max]
+  // One thumb per value: a number is one value, an array is one thumb per entry (a range has two).
+  const current = value ?? defaultValue
+  const _values = Array.isArray(current) ? current : [current ?? min]
 
   return (
     <SliderPrimitive.Root

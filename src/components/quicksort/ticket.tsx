@@ -32,6 +32,7 @@ type EventTicketProps = Omit<React.ComponentProps<"article">, "title"> & {
 /**
  * The event cover: a wide 2:1 ink ticket. Left: logo and partner on top, the title at the bottom ending in lime.
  * Right: a darker stub with the event number, the day in large mono, the month in lime, then time and place.
+ * Its three lime touches (logo dot, title ending, month) are the brand's event cover, a documented exception to the one-pivot rule.
  * Sizes follow the ticket's own width (container query units), so it works from a list thumbnail to a hero.
  */
 function EventTicket({ title, accent, partner, number, day, month, time, place, className, ...props }: EventTicketProps) {
