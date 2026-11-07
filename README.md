@@ -16,21 +16,28 @@ pnpm dlx shadcn@latest add https://quicksort.design/r/date-picker.json
 
 Each component brings the components it depends on. You own the code from then on.
 
-### npm (`@quicksort/ui`)
+### npm (`@quicksort-sas/ui`)
+
+Published to GitHub Packages. In the consuming project, add an `.npmrc` (the token needs `read:packages`):
+
+```ini
+@quicksort-sas:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
 
 ```sh
-pnpm add @quicksort/ui
+pnpm add @quicksort-sas/ui
 ```
 
 ```css
 /* your main CSS file */
 @import "tailwindcss";
-@import "@quicksort/ui/theme.css";
-@source "../node_modules/@quicksort/ui/dist";
+@import "@quicksort-sas/ui/theme.css";
+@source "../node_modules/@quicksort-sas/ui/dist";
 ```
 
 ```tsx
-import { Button, DatePicker } from "@quicksort/ui"
+import { Button, DatePicker } from "@quicksort-sas/ui"
 
 <Button variant="pivot">Book a call</Button>
 <DatePicker placeholder="Workshop date" />

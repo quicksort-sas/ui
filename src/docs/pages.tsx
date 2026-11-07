@@ -40,7 +40,7 @@ function Install({ slug }: { slug: string }) {
         <TabsTrigger value="npm">npm</TabsTrigger>
       </TabsList>
       <TabsContent value="shadcn" className="min-w-0"><Code code={`pnpm dlx shadcn@latest add ${REGISTRY}/${slug}.json`} /></TabsContent>
-      <TabsContent value="npm" className="min-w-0 grid gap-3"><Code code={`pnpm add @quicksort/ui`} /><Code label="Your main CSS file" code={`@import "tailwindcss";\n@import "@quicksort/ui/theme.css";\n/* path from this CSS file to node_modules, so Tailwind finds the classes the components use */\n@source "../node_modules/@quicksort/ui/dist";`} /></TabsContent>
+      <TabsContent value="npm" className="min-w-0 grid gap-3"><Code code={`pnpm add @quicksort-sas/ui`} /><Code label="Your main CSS file" code={`@import "tailwindcss";\n@import "@quicksort-sas/ui/theme.css";\n/* path from this CSS file to node_modules, so Tailwind finds the classes the components use */\n@source "../node_modules/@quicksort-sas/ui/dist";`} /></TabsContent>
     </Tabs>
   )
 }
@@ -82,7 +82,7 @@ export function Home() {
         <p className="text-lg text-muted-foreground">React components in the Quicksort style, built on shadcn/ui and Base UI. Ink, paper and stone carry the interface; lime marks the one thing that matters. Light and dark, accessible, and yours to copy or install.</p>
         <div className="grid min-w-0 gap-3 sm:max-w-2xl">
           <Code label="shadcn registry" code={`pnpm dlx shadcn@latest add ${REGISTRY}/button.json`} />
-          <Code label="npm" code={`pnpm add @quicksort/ui`} />
+          <Code label="npm" code={`pnpm add @quicksort-sas/ui`} />
         </div>
       </header>
       {CATEGORIES.map((cat) => (

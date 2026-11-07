@@ -1,4 +1,4 @@
-// @quicksort/ui — every component, re-exported. Import the theme once: import "@quicksort/ui/theme.css"
+// @quicksort-sas/ui — every component, re-exported. Import the theme once: import "@quicksort-sas/ui/theme.css"
 export * from "@/components/ui/accordion"
 export * from "@/components/ui/alert-dialog"
 export * from "@/components/ui/alert"
