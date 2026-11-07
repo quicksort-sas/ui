@@ -26,7 +26,7 @@ const GROUPS: { name: string; tokens: Token[] }[] = [
     ["primary", "#141414", "#ece8df", "Default buttons"],
     ["primary-foreground", "#faf8f3", "#141413"],
     ["border", "#e4e1db", "#2a2927", "Hairlines"],
-    ["input", "#c9c4bb", "#3f3d3a", "Control outlines"],
+    ["input", "#8a857d", "#76726b", "Control outlines"],
     ["ring", "#141414", "#ece8df", "Focus"],
   ] },
   { name: "Pivot and status", tokens: [

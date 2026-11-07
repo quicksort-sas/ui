@@ -145,6 +145,7 @@
   html.dark { color-scheme: dark; }
   body { @apply bg-background text-foreground; font-feature-settings: "ss01"; }
   button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+  b, strong { font-weight: 500; } /* two weights only, 400 and 500: never browser bold */
   ::selection { background: var(--pivot); color: var(--pivot-foreground); }
 }
 

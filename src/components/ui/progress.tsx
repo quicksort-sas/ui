@@ -50,7 +50,7 @@ function ProgressIndicator({
     <ProgressPrimitive.Indicator
       data-slot="progress-indicator"
       className={cn(
-        "h-full bg-primary transition-[width] duration-200 ease-out motion-reduce:transition-none group-data-[variant=pivot]/progress:bg-pivot group-data-[variant=pivot]/progress:shadow-[inset_0_0_0_1px_#141414] dark:group-data-[variant=pivot]/progress:shadow-none",
+        "h-full bg-primary transition-[width] duration-200 ease-out motion-reduce:transition-none group-data-[variant=pivot]/progress:bg-pivot group-data-[variant=pivot]/progress:shadow-[inset_0_0_0_1.5px_#141414] dark:group-data-[variant=pivot]/progress:shadow-none",
         className
       )}
       {...props}

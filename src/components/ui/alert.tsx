@@ -17,7 +17,7 @@ const alertVariants = cva(
         warning: "border-l-2 border-l-warning *:[svg]:text-warning",
         // the one message that matters on the screen (use once per view)
         pivot:
-          "overflow-hidden pl-5 before:absolute before:inset-y-0 before:left-0 before:w-1 before:bg-pivot before:shadow-[1px_0_0_#141414] *:[svg]:text-foreground dark:before:shadow-none",
+          "overflow-hidden pl-5 before:absolute before:inset-y-0 before:left-0 before:w-1 before:bg-pivot before:shadow-[1.5px_0_0_#141414] *:[svg]:text-foreground dark:before:shadow-none",
       },
     },
     defaultVariants: {

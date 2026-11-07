@@ -13,7 +13,7 @@ const badgeVariants = cva(
         default: "bg-primary text-primary-foreground [a]:hover:bg-primary/85",
         secondary: "bg-secondary text-secondary-foreground [a]:hover:bg-accent",
         outline: "border-input text-muted-foreground [a]:hover:border-foreground [a]:hover:text-foreground",
-        pivot: "border-[#141414] bg-pivot text-pivot-foreground",
+        pivot: "border-[1.5px] border-[#141414] bg-pivot text-pivot-foreground",
         success: "bg-success/12 text-success",
         warning: "bg-warning/12 text-warning",
         destructive: "bg-destructive/12 text-destructive",

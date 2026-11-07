@@ -75,7 +75,7 @@ function DatePickerTrigger({ className, placeholder, label, ...props }: TriggerP
       {...props}
     >
       <CalendarIcon aria-hidden />
-      <span className="min-w-0 flex-1 truncate">{label ?? placeholder}</span>
+      <span className={cn("min-w-0 flex-1 truncate", label && "num")}>{label ?? placeholder}</span>
     </PopoverTrigger>
   )
 }
